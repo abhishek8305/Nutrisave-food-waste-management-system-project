@@ -1,0 +1,59 @@
+<html>
+    <head>
+    <title>deshboard</title>    
+    </head>
+    <style>
+        body{
+            margin: 0;
+            font-family: Arial;
+        }
+        .sidebar{
+            width: 200px;
+            height: 100vh;
+            background: blue;
+            position: fixed;
+        }
+        .sidebar a{
+            display:block;
+            color:aqua
+                    }  
+        
+        .sidebar a:hover{
+            background: white;
+
+        }
+        .main{
+            margin-left:210px;
+            padding:20px;
+        }
+    </style>
+    <script>
+        function showform(){
+            document.getElementById("formsection").style.display="block"
+        }
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <a><b><u><i>dashboard</i></u></b></a>
+    <a onclick="showform()">add food</a>
+    </div>
+    <div class="main">
+        <h1>welcome to dashboard</h1>
+        <div id="formsection"style="display:none;">
+            <h2>food details form</h2>
+         <form method="POST" action="{{ url_for('add_food') }}">
+    <label><b>food name:</b></label><br>
+        <input type="text"name="food_name"required><br><br>
+        <label><b>quantity(in kg):</b></label><br>
+        <input type ="number" name="quantity"required><br><br>
+            <label><b>location :</b></label><br>
+            <input type="text"name="location"><br><br>
+            <label><b>upload image:</b></label><br>
+            <input type="file"name="image"><br><br>
+            <button type ="submit">upload food</button>
+        </div>
+        </div>
+            </form>
+        </body>
+        </html>

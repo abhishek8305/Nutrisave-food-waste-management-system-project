@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Food</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+        }
+
+        table {
+            width: 80%;
+            margin: 50px auto;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid gray;
+            text-align: center;
+        }
+
+        th {
+            background: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2 style="text-align:center;">Available Food</h2>
+
+<table>
+    <tr>
+        <th>Food Name</th>
+        <th>Quantity</th>
+        <th>Location</th>
+    </tr>
+
+    {% for food in foods %}
+    <tr>
+        <td>{{ food[1] }}</td>
+        <td>{{ food[2] }}</td>
+        <td>{{ food[3]}}</td>
+<td>
+    <a href="{{ url_for('accept_food', id=food[0]) }}">
+                <button>Accept</button>
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
