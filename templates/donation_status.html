@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donation Status</title>
+
+<style>
+body{
+    font-family:Arial;
+    margin:0;
+    background:#f5f5f5;
+}
+
+.header{
+    background:#1b5e20;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+.container{
+    width:90%;
+    margin:20px auto;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    margin:10px 0;
+    border-radius:10px;
+    box-shadow:0px 0px 10px #ccc;
+}
+
+/* Status colors */
+.accepted{
+    color:green;
+    font-weight:bold;
+}
+
+.pending{
+    color:orange;
+    font-weight:bold;
+}
+
+.rejected{
+    color:red;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body style="background-color:pink;">
+
+<div class="header">
+    <h2>📦 Donation Status</h2>
+</div>
+
+<div class="container">
+
+    {% for d in data %}
+    <div class="card">
+        <p><b>Food:</b> {{ d[1] }}</p>
+        <p><b>Quantity:</b> {{ d[2] }} kg</p>
+        <p><b>Location:</b> {{ d[3] }}</p>
+
+        <p>
+            <b>Status:</b> 
+            <span class="
+                {% if d[4]=='Accepted' %}accepted
+                {% elif d[4]=='Rejected' %}rejected
+                {% else %}pending
+                {% endif %}
+            ">
+                {{ d[4] }}
+            </span>
+        </p>
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

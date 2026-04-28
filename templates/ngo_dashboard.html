@@ -11,7 +11,7 @@
         }
 
         .header {
-            background: blue;
+            background: #1b5e20;
             color: white;
             padding: 15px;
             text-align: center;
@@ -20,35 +20,41 @@
         .container {
             display: flex;
             justify-content: center;
-            margin-top: 80px;
+            margin-top: 60px;
         }
 
         .box {
             background: white;
             padding: 30px;
-            width: 300px;
+            width: 320px;
             text-align: center;
             border-radius: 10px;
             box-shadow: 0 0 10px gray;
+        }
+
+        /* ✅ Image style */
+        .box img {
+            width: 120px;
+            margin-bottom: 15px;
         }
 
         a {
             display: block;
             margin: 10px 0;
             padding: 10px;
-            background: blue;
+            background: #1b5e20;
             color: white;
             text-decoration: none;
             border-radius: 5px;
         }
 
         a:hover {
-            background: darkblue;
+            background: #2e7d32;
         }
     </style>
 </head>
 
-<body>
+<body style="background-color:pink;">
 
 <div class="header">
     <h2>NGO Dashboard</h2>
@@ -57,11 +63,14 @@
 <div class="container">
     <div class="box">
 
+        
+        <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="NGO Icon">
+
         <h3>Welcome NGO</h3>
 
         <a href="{{ url_for('available_food') }}">Available Food</a>
 
-        <a href="{{ url_for('my_requests') }}">📦 my_requests</a>
+        <a href="{{ url_for('my_requests') }}">📦 My Requests</a>
 
         <a href="/logout">🚪 Logout</a>
 

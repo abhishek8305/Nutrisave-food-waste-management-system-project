@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            background: linear-gradient(135deg,#e8f5e9,#c8e6c9);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:#fff;
+            padding:30px;
+            border-radius:12px;
+            width:320px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#2e7d32;
+            margin-bottom:20px;
+        }
+
+        input, select{
+            width:100%;
+            padding:10px;
+            margin:8px 0;
+            border:1px solid #ccc;
+            border-radius:8px;
+            outline:none;
+        }
+
+        input:focus, select:focus{
+            border-color:#2e7d32;
+        }
+
+        button{
+            width:100%;
+            padding:10px;
+            background:#2e7d32;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#1b5e20;
+        }
+
+        a{
+            display:block;
+            text-align:center;
+            margin-top:10px;
+            text-decoration:none;
+            color:#2e7d32;
+        }
+
+        a:hover{
+            text-decoration:underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Create Account</h2>
+
+    <form method="post">
+        <input type="email" name="email" placeholder="Enter email" required>
+
+        <input type="password" name="password" placeholder="Enter password" required>
+
+        <select name="role">
+            <option value="restaurant">Restaurant</option>
+            <option value="ngo">NGO</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <button type="submit">Signup</button>
+    </form>
+
+    <a href="{{ url_for('login') }}">Already have an account? Login</a>
+</div>
+
+</body>
+</html>

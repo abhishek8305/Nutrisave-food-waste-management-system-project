@@ -1,59 +1,161 @@
+<!DOCTYPE html>
 <html>
-    <head>
-    <title>deshboard</title>    
-    </head>
-    <style>
-        body{
-            margin: 0;
-            font-family: Arial;
-        }
-        .sidebar{
-            width: 200px;
-            height: 100vh;
-            background: blue;
-            position: fixed;
-        }
-        .sidebar a{
-            display:block;
-            color:aqua
-                    }  
-        
-        .sidebar a:hover{
-            background: white;
+<head>
+    <title>Dashboard</title>
 
-        }
-        .main{
-            margin-left:210px;
-            padding:20px;
-        }
-    </style>
-    <script>
-        function showform(){
-            document.getElementById("formsection").style.display="block"
-        }
-    </script>
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    overflow-y:auto;
+}
+
+/* Sidebar */
+.sidebar{
+    width:200px;
+    height:100vh;
+    background:#1b5e20;
+    position:fixed;
+    padding-top:20px;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    padding:12px;
+    text-decoration:none;
+}
+
+.sidebar a:hover{
+    background:#2e7d32;
+}
+
+/* Main */
+.main{
+    margin-left:210px;
+    padding:20px;
+}
+
+/* Cards */
+.card{
+    display:inline-block;
+    width:200px;
+    background:#f4f4f4;
+    margin:10px;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.card img{
+    width:100%;
+    height:120px;
+    border-radius:8px;
+}
+
+/* Form */
+#formsection{
+    display:none;
+    margin-top:20px;
+    padding-bottom:80px;
+}
+
+/* Inputs */
+input{
+    padding:8px;
+    width:100%;
+    max-width:300px;
+    margin-bottom:10px;
+}
+
+/* Button */
+button{
+    background:#1b5e20;
+    color:white;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:30px;
+}
+
+button:hover{
+    background:#2e7d32;
+}
+</style>
+
+<script>
+function showform(){
+    document.getElementById("formsection").style.display="block";
+}
+</script>
+
 </head>
-<body>
-    <div class="sidebar">
-        <a><b><u><i>dashboard</i></u></b></a>
-    <a onclick="showform()">add food</a>
+
+<body style=" background-color:orange;">
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <a><b>Dashboard</b></a>
+
+    <!-- 🔹 MENU LINKS -->
+    <a href="{{ url_for('overview') }}">Dashboard Overview</a>
+    <a onclick="showform()">Add Food</a>
+    <a href="{{ url_for('my_food') }}">My Food</a>
+    <a href="{{ url_for('donation_status') }}">Donations Status</a>
+    <a href="{{ url_for('help') }}">Help</a>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+    <h1 style="color:blue;"><i><b>Welcome to Restaurant Dashboard</b></i></h1>
+    <h3 style ="color:black"><b>Add new Food</b></h3>
+    <p style="color:green;"><b>Share extra food with NGOs</b></p>
+    <p style="color:green;"><b>manage your food donations here</b></p>
+
+    <!-- Cards -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+        <p>Non-Vegetarian Food</p>
     </div>
-    <div class="main">
-        <h1>welcome to dashboard</h1>
-        <div id="formsection"style="display:none;">
-            <h2>food details form</h2>
-         <form method="POST" action="{{ url_for('add_food') }}">
-    <label><b>food name:</b></label><br>
-        <input type="text"name="food_name"required><br><br>
-        <label><b>quantity(in kg):</b></label><br>
-        <input type ="number" name="quantity"required><br><br>
-            <label><b>location :</b></label><br>
-            <input type="text"name="location"><br><br>
-            <label><b>upload image:</b></label><br>
-            <input type="file"name="image"><br><br>
-            <button type ="submit">upload food</button>
-        </div>
-        </div>
-            </form>
-        </body>
-        </html>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c">
+        <p>Vegetable Food</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee">
+        <p>Fruit Food</p>
+    </div>
+
+    <!-- Form -->
+    <div id="formsection">
+
+        <h2>Food Details Form</h2>
+
+        <form method="POST" action="{{ url_for('add_food') }}" enctype="multipart/form-data">
+
+            <label>Food Name:</label><br>
+            <input type="text" name="food_name" required><br>
+
+            <label>Quantity (kg):</label><br>
+            <input type="number" name="quantity" required><br>
+
+            <label>Location:</label><br>
+            <input type="text" name="location"><br>
+
+            <label>Upload Image:</label><br>
+            <input type="file" name="image"><br><br>
+
+            <button type="submit">Upload Food</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
