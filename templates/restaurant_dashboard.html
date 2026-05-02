@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>NutriSave Dashboard</title>
 
 <style>
 body{
     margin:0;
-    font-family:Arial;
+    font-family:Arial, sans-serif;
     overflow-y:auto;
+}
+
+/* Header Banner */
+.top-banner {
+    background: #1b5e20;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 2px solid #2e7d32;
+}
+
+.top-banner h1 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.top-banner p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    opacity: 0.9;
 }
 
 /* Sidebar */
 .sidebar{
     width:200px;
     height:100vh;
-    background:#1b5e20;
+    background:#6d6868;
     position:fixed;
     padding-top:20px;
 }
@@ -22,61 +43,86 @@ body{
 .sidebar a{
     display:block;
     color:white;
-    padding:12px;
+    padding:15px;
     text-decoration:none;
+    font-size: 15px;
 }
 
 .sidebar a:hover{
-    background:#2e7d32;
+    background:#8b978c;
 }
 
 /* Main */
 .main{
-    margin-left:210px;
-    padding:20px;
+    margin-left:220px;
+    padding:30px;
+}
+
+/* Typography */
+h1 { font-size: 32px; margin-bottom: 10px; }
+h2 { font-size: 24px; color: #333; }
+h3 { font-size: 20px; margin-top: 0; }
+p { font-size: 16px; line-height: 1.5; }
+
+/* Cards Container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 /* Cards */
 .card{
-    display:inline-block;
-    width:200px;
-    background:#f4f4f4;
-    margin:10px;
+    width:220px;
+    background:white;
     padding:10px;
     border-radius:10px;
     text-align:center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .card img{
     width:100%;
-    height:120px;
+    height:140px;
     border-radius:8px;
+    object-fit: cover;
 }
 
-/* Form */
+.card p {
+    font-weight: bold;
+    color: #444;
+    margin-top: 10px;
+}
+
+/* Form Section */
 #formsection{
     display:none;
-    margin-top:20px;
-    padding-bottom:80px;
+    margin-top:30px;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    max-width: 450px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* Inputs */
 input{
-    padding:8px;
+    padding:10px;
     width:100%;
-    max-width:300px;
-    margin-bottom:10px;
+    max-width:350px;
+    margin-bottom:15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-/* Button */
 button{
     background:#1b5e20;
     color:white;
-    padding:10px;
+    padding:12px 24px;
     border:none;
-    border-radius:8px;
+    border-radius:5px;
+    font-weight: bold;
     cursor:pointer;
-    margin-bottom:30px;
+    transition: 0.3s;
 }
 
 button:hover{
@@ -87,72 +133,106 @@ button:hover{
 <script>
 function showform(){
     document.getElementById("formsection").style.display="block";
+    document.getElementById("formsection").scrollIntoView({behavior: 'smooth'});
 }
 </script>
 
 </head>
 
-<body style=" background-color:orange;">
+<body style="background-color:rgb(247, 245, 243);">
 
-<!-- Sidebar -->
+
+<div class="top-banner">
+    <h1>NutriSave</h1>
+    <p>Smart Food Waste Management System — connecting surplus food with those who need it most.</p>
+</div>
+
+
 <div class="sidebar">
-    <a><b>Dashboard</b></a>
-
-    <!-- 🔹 MENU LINKS -->
+    <a style="font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.2); margin-bottom: 10px;"><b>Navigation</b></a>
     <a href="{{ url_for('overview') }}">Dashboard Overview</a>
-    <a onclick="showform()">Add Food</a>
+    <a href="javascript:void(0)" onclick="showform()">Add Food</a>
     <a href="{{ url_for('my_food') }}">My Food</a>
     <a href="{{ url_for('donation_status') }}">Donations Status</a>
     <a href="{{ url_for('help') }}">Help</a>
 </div>
 
-<!-- Main -->
+
 <div class="main">
 
-    <h1 style="color:blue;"><i><b>Welcome to Restaurant Dashboard</b></i></h1>
-    <h3 style ="color:black"><b>Add new Food</b></h3>
-    <p style="color:green;"><b>Share extra food with NGOs</b></p>
-    <p style="color:green;"><b>manage your food donations here</b></p>
+    <h1 style="color:#0d47a1;"><b>Welcome to Restaurant Dashboard</b></h1>
+    <h3 style="color:#333"><b>Categorized Food Items</b></h3>
+    <p style="color:#1b5e20; margin: 0;"><b>Share extra food with NGOs</b></p>
+    <p style="color:#1b5e20; margin-bottom: 25px;"><b>Manage your food donations here</b></p>
 
-    <!-- Cards -->
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
-        <p>Non-Vegetarian Food</p>
+    
+    <div class="card-container">
+        
+        
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=400" alt="Non-Veg">
+            <p>Non-Vegetarian Food</p>
+        </div>
+
+
+        
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=400" alt="Fruit">
+            <p>Fruit Food</p>
+        </div>
+
+        
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400" alt="Salad">
+            <p>Fresh Salads</p>
+        </div>
+
+        
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=400" alt="Vegetarian">
+            <p>Vegetarian Meals</p>
+        </div>
+
+        
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400" alt="Bakery">
+            <p>Bakery & Bread</p>
+        </div>
+
+        
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400" alt="Grains">
+            <p>Grains & Rice</p>
+        </div>
+
+        
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=400" alt="Juice and Beverages">
+            <p>Juice & Beverages</p>
+        </div>
+
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c">
-        <p>Vegetable Food</p>
-    </div>
+    <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); margin: 40px 0;">
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee">
-        <p>Fruit Food</p>
-    </div>
-
-    <!-- Form -->
+    
     <div id="formsection">
-
         <h2>Food Details Form</h2>
-
         <form method="POST" action="{{ url_for('add_food') }}" enctype="multipart/form-data">
+            <label><b>Food Name:</b></label><br>
+            <input type="text" name="food_name" placeholder="e.g. Fresh Orange Juice" required><br>
 
-            <label>Food Name:</label><br>
-            <input type="text" name="food_name" required><br>
+            <label><b>Quantity (kg/L):</b></label><br>
+            <input type="number" name="quantity" placeholder="e.g. 5" required><br>
 
-            <label>Quantity (kg):</label><br>
-            <input type="number" name="quantity" required><br>
+            <label><b>Location:</b></label><br>
+            <input type="text" name="location" placeholder="Pick-up Street/City"><br>
 
-            <label>Location:</label><br>
-            <input type="text" name="location"><br>
-
-            <label>Upload Image:</label><br>
+            <label><b>Upload Image:</b></label><br>
             <input type="file" name="image"><br><br>
 
             <button type="submit">Upload Food</button>
-
         </form>
-
     </div>
 
 </div>

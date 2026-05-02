@@ -3,38 +3,159 @@
 <head>
     <title>Help - NutriSave</title>
     <style>
-        body{
-            font-family: Arial;
-            background: #f1f8e9;
-            padding: 20px;
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f1f8e9;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
         }
-        .box{
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 60%;
+        .container {
+            max-width: 900px;
             margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
-        h2{
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header-section h1 {
+            color: #1b5e20;
+            margin: 0;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        h2 {
             color: #2e7d32;
+            border-bottom: 2px solid #e8f5e9;
+            padding-bottom: 10px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        h3 {
+            color: #388e3c;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .question {
+            font-weight: bold;
+            color: #1b5e20;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .answer {
+            color: #555;
+            margin-left: 10px;
+            border-left: 3px solid #c8e6c9;
+            padding-left: 15px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .contact-card {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #2e7d32;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 30px;
+        }
+        .btn-back {
+            display: inline-block;
+            text-decoration: none;
+            color: #2e7d32;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
     </style>
 </head>
-<body>
+<body style="background-color: #388e3c;">
 
-<div class="box">
-    <h2>Help & Support</h2>
+<div class="container">
+    <div class="header-section">
+        <a href="/" class="btn-back">← Back to Dashboard</a>
+        <h1>NutriSave Help Center</h1>
+        <p>Your guide to reducing food waste and supporting the community.</p>
+    </div>
 
-    <p><b>How to use Restaurant Dashboard:</b></p>
-    <ul>
-        <li>Add extra food in "My Food" section</li>
-        <li>NGO can request your food</li>
-        <li>Check donation status in "Requests"</li>
-    </ul>
+    <!-- 1. FAQs -->
+    <div class="box">
+        <h2>1. Frequently Asked Questions (FAQs)</h2>
+        <div class="faq-item">
+            <span class="question">How do I donate food?</span>
+            <div class="answer">Register as a donor and upload details including the food item name, quantity, and expiry time via the "Add Food" section.</div>
+        </div>
+        <div class="faq-item">
+            <span class="question">How do I collect food?</span>
+            <div class="answer">NGOs and volunteers can view available food listings and submit a pickup request through the dashboard.</div>
+        </div>
+        <div class="faq-item">
+            <span class="question">How do I track a donation?</span>
+            <div class="answer">Use the System Tracking feature in your "Donations Status" menu to monitor current progress and delivery updates.</div>
+        </div>
+        <div class="faq-item">
+            <span class="question">What are the requirements?</span>
+            <div class="answer">Ensure you have a stable internet connection and use a modern browser like Chrome or Edge for the best experience.</div>
+        </div>
+    </div>
 
-    <p><b>Contact Support:</b></p>
-    <p>Email: support@nutrisave.com</p>
+    <!-- 2. System Workflow (New Section) -->
+    <div class="box">
+        <h2>2. How NutriSave Works</h2>
+        <ul>
+            <li><b>Listing:</b> Restaurants list surplus food with real-time images and expiry data.</li>
+            <li><b>Matching:</b> Our system notifies nearby registered NGOs about the availability.</li>
+            <li><b>Verification:</b> NGOs verify the food quality upon pickup using the digital checklist.</li>
+            <li><b>Completion:</b> Once delivered, the status is updated to 'Completed' for record-keeping.</li>
+        </ul>
+    </div>
+
+    <!-- 3. Contact Support -->
+    <div class="box">
+        <h2>3. Contact Support</h2>
+        <div class="contact">
+            <p><b>Technical Issues:</b> If you experience bugs with the Python backend or MySQL database, please email <a href="mailto:dev@nutrisave.com">dev@nutrisave.com</a> with a detailed report.</p>
+            <div class="contact-card">
+                <p><b>Location Assistance:</b> trouble finding a pickup location? Call our hotline: <b>1-800-NUTRI</b>.</p>
+                <p><b>Account Help:</b> For registration or login issues, contact <a href="mailto:support@nutrisave.com">support@nutrisave.com</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Safety and Guidelines -->
+    <div class="box">
+        <h2>4. Safety & Guidelines</h2>
+        <ul>
+            <li><b>Food Expiry:</b> Always check the listed food expiry time before requesting a pickup to ensure the food reaches the needy while edible.</li>
+            <li><b>Quality Standards:</b> Donors are responsible for providing accurate details and maintaining hygiene during packing.</li>
+            <li><b>Coordination:</b> Maintain clear communication via the platform to reduce transit time and prevent wastage.</li>
+        </ul>
+    </div>
+
+    <!-- 5. Feedback and Suggestions -->
+    <div class="box">
+        <h2>5. Feedback & Suggestions</h2>
+        <p>We believe in data-driven growth. Your insights help us improve the distribution network.</p>
+        <p><b>Future Features:</b> We are currently working on a mobile application and AI-based food waste prediction modules. If you have ideas for these, we want to hear them!</p>
+        <button style="background: #2e7d32; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Submit Feedback</button>
+    </div>
+
+    </div>
 </div>
 
 </body>

@@ -1,76 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Food</title>
+    <title>My Food - NutriSave</title>
 
 <style>
 body{
-    font-family:Arial;
-    margin:0;
-    background:#f5f5f5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: rgb(212, 212, 224);
 }
 
-.header{
-    background:#1b5e20;
-    color:white;
-    padding:15px;
-    text-align:center;
+/* Matching your NutriSave Dashboard Header */
+.header {
+    background: #1b5e20;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #2e7d32;
 }
 
-.container{
-    width:90%;
-    margin:20px auto;
+.header h2 {
+    margin: 0;
+    font-size: 28px;
 }
 
-.card{
-    background:white;
-    padding:15px;
-    margin:10px 0;
-    border-radius:10px;
-    box-shadow:0px 0px 10px #ccc;
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap like the dashboard */
+    gap: 20px;
+    justify-content: center;
 }
 
-.delete{
-    background:red;
-    color:white;
-    padding:5px 10px;
-    border-radius:5px;
-    text-decoration:none;
+/* Updated Card to show Image */
+.card {
+    background: white;
+    padding: 15px;
+    width: 250px; /* Fixed width for consistency */
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    text-align: left;
 }
 
-.back{
-    display:inline-block;
-    margin:10px;
-    padding:8px 12px;
-    background:#1b5e20;
-    color:white;
-    text-decoration:none;
-    border-radius:5px;
+/* Food Image Styling */
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.card b {
+    color: #1b5e20;
+}
+
+.card p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.action-area {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete {
+    background: #d32f2f;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.delete:hover {
+    background: #b71c1c;
+}
+
+.back {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
+    background: #6d6868; /* Matching your sidebar color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.back:hover {
+    background: #8b978c;
 }
 </style>
 
 </head>
 
-<body  style="background-color:blue;">
+<body>
 
 <div class="header">
     <h2>🍲 My Uploaded Food</h2>
+    <p style="margin-top: 5px; opacity: 0.9;">Manage your current surplus food contributions</p>
 </div>
 
+<a class="back" href="{{ url_for('overview') }}">← Back to Dashboard</a>
 
 <div class="container">
 
     {% if foods|length == 0 %}
-        <p>No food uploaded yet.</p>
+        <div style="text-align: center; width: 100%; margin-top: 50px;">
+            <p style="font-size: 18px; color: #555;">No food uploaded yet.</p>
+        </div>
     {% endif %}
 
     {% for f in foods %}
     <div class="card">
+        <!-- 🔹 IMAGE ADDED HERE -->
+        <!-- Assuming f[4] is the column where your image filename is stored -->
+        {% if f[4] %}
+            <img src="{{ url_for('static', filename='uploads/' + f[4]) }}" alt="Food Image">
+        {% else %}
+            <img src="https://images.unsplash.com/photo-1495195129352-aec325a55b65?q=80&w=400" alt="Placeholder">
+        {% endif %}
+
         <p><b>Food:</b> {{ f[1] }}</p>
         <p><b>Quantity:</b> {{ f[2] }} kg</p>
         <p><b>Location:</b> {{ f[3] }}</p>
 
-        <a class="delete" href="/delete_food/{{ f[0] }}">Delete</a>
+        <div class="action-area">
+            <a class="delete" href="/delete_food/{{ f[0] }}" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
+        </div>
     </div>
     {% endfor %}
 

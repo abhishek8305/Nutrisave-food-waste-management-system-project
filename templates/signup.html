@@ -1,94 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Signup</title>
+    <title>Register</title>
+
     <style>
         body{
-            margin:0;
-            font-family:Arial, sans-serif;
-            background: linear-gradient(135deg,#e8f5e9,#c8e6c9);
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
+            font-family: Arial;
+            background:#f4f4f4;
         }
-
         .container{
-            background:#fff;
-            padding:30px;
-            border-radius:12px;
-            width:320px;
-            box-shadow:0 5px 20px rgba(0,0,0,0.2);
+            width:350px;
+            margin:50px auto;
+            padding:20px;
+            background:white;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
         }
-
-        h2{
-            text-align:center;
-            color:#2e7d32;
-            margin-bottom:20px;
-        }
-
         input, select{
             width:100%;
             padding:10px;
             margin:8px 0;
-            border:1px solid #ccc;
-            border-radius:8px;
-            outline:none;
         }
-
-        input:focus, select:focus{
-            border-color:#2e7d32;
-        }
-
         button{
             width:100%;
             padding:10px;
-            background:#2e7d32;
+            background:green;
             color:white;
             border:none;
-            border-radius:8px;
-            cursor:pointer;
             font-size:16px;
-        }
-
-        button:hover{
-            background:#1b5e20;
-        }
-
-        a{
-            display:block;
-            text-align:center;
-            margin-top:10px;
-            text-decoration:none;
-            color:#2e7d32;
-        }
-
-        a:hover{
-            text-decoration:underline;
         }
     </style>
 </head>
 
-<body>
+<body style="background-color:orange;">
 
 <div class="container">
-    <h2>Create Account</h2>
+    <h2>Register User</h2>
 
-    <form method="post">
-        <input type="email" name="email" placeholder="Enter email" required>
+    <form action="/register" method="POST">
 
-        <input type="password" name="password" placeholder="Enter password" required>
+        <input type="text" name="fullname" placeholder="Full Name" required>
+
+        <input type="text" name="organization" placeholder="Organization / Full Name">
+
+        <input type="email" name="email" placeholder="Email ID" required>
+
+        <input type="text" name="phone" placeholder="Phone No" required>
+
+        <input type="text" name="city" placeholder="City / Location">
 
         <select name="role">
-            <option value="restaurant">Restaurant</option>
-            <option value="ngo">NGO</option>
-            <option value="admin">Admin</option>
+            <option value="">Select Role</option>
+            <option>Restaurant</option>
+            <option>admin</option>
+            <option>NGO</option>
+            
+            
+            
         </select>
 
-        <button type="submit">Signup</button>
-    </form>
+        <input type="password" name="password" placeholder="Password" required>
 
-    <a href="{{ url_for('login') }}">Already have an account? Login</a>
+        <button type="submit">Create Account</button>
+
+    </form>
 </div>
 
 </body>
